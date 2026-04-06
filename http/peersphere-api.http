@@ -1,0 +1,78 @@
+### Variables (set after login)
+@baseUrl = http://localhost:8080
+@token = replace-with-bearer-token
+
+### Health (no auth)
+GET {{baseUrl}}/actuator/health
+
+### Register submitter
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Submitter One",
+  "email": "submitter@example.com",
+  "password": "password12"
+}
+
+### Register reviewer
+POST {{baseUrl}}/api/auth/register
+Content-Type: application/json
+
+{
+  "name": "Reviewer One",
+  "email": "reviewer@example.com",
+  "password": "password12"
+}
+
+### Login submitter
+POST {{baseUrl}}/api/auth/login
+Content-Type: application/json
+
+{
+  "email": "submitter@example.com",
+  "password": "password12"
+}
+
+### Create project (use token from login)
+POST {{baseUrl}}/api/projects
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "title": "Capstone peer review",
+  "description": "Final project submissions"
+}
+
+### List projects
+GET {{baseUrl}}/api/projects
+Authorization: Bearer {{token}}
+
+### Submit work (replace projectId)
+POST {{baseUrl}}/api/submissions
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "projectId": 1,
+  "content": "https://github.com/example/my-submission"
+}
+
+### List submissions by project
+GET {{baseUrl}}/api/submissions/project/1
+Authorization: Bearer {{token}}
+
+### Add review (reviewer token; replace submissionId)
+POST {{baseUrl}}/api/reviews
+Content-Type: application/json
+Authorization: Bearer {{token}}
+
+{
+  "submissionId": 1,
+  "rating": 4,
+  "comment": "Solid work; expand the evaluation section."
+}
+
+### List reviews for submission
+GET {{baseUrl}}/api/reviews/submission/1
+Authorization: Bearer {{token}}
