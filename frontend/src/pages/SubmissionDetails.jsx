@@ -97,7 +97,7 @@ const SubmissionDetails = () => {
                 </div>
               </div>
               <a 
-                href={`http://localhost:8080${submission.fileUrl}`}
+                href={`${import.meta.env.VITE_API_URL || 'http://localhost:8080'}${submission.fileUrl}`}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="flex items-center space-x-2 px-6 py-3 bg-white text-indigo-600 rounded-xl font-bold border-2 border-indigo-50 hover:bg-indigo-600 hover:text-white hover:border-indigo-600 transition-all shadow-sm"
