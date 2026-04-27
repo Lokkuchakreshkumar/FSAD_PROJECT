@@ -2,10 +2,10 @@ import React, { useEffect, useState } from 'react';
 import { useAuth } from '../contexts/AuthContext';
 import api from '../api/client';
 import { useNavigate, Link } from 'react-router-dom';
-import { Plus, Orbit, LogOut, ExternalLink, Calendar, Search, FileText, Download } from 'lucide-react';
+import { Plus, Orbit, LogOut, ExternalLink, Calendar, Search, FileText, Download, Shield } from 'lucide-react';
 
 const Dashboard = () => {
-  const { logout } = useAuth();
+  const { logout, isAdmin } = useAuth();
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState('');
@@ -52,7 +52,7 @@ const Dashboard = () => {
 
   return (
     <div className="min-h-screen bg-white font-grotesk">
-      {/* Navigation */}
+      {}
       <nav className="glass sticky top-0 z-50">
         <div className="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
           <div className="flex items-center space-x-4">
@@ -63,18 +63,29 @@ const Dashboard = () => {
               PeerSphere
             </h1>
           </div>
-          <button 
-            onClick={logout}
-            className="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-100 text-slate-600 font-bold hover:bg-slate-200 hover:text-slate-900 transition-all active:scale-95"
-          >
-            <LogOut className="w-5 h-5" />
-            <span>Sign Out</span>
-          </button>
+          <div className="flex items-center space-x-3">
+            {isAdmin() && (
+              <Link 
+                to="/admin"
+                className="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-all active:scale-95 shadow-lg shadow-indigo-500/20"
+              >
+                <Shield className="w-5 h-5" />
+                <span>Admin</span>
+              </Link>
+            )}
+            <button 
+              onClick={logout}
+              className="flex items-center space-x-2 px-5 py-2.5 rounded-xl bg-slate-100 text-slate-600 font-bold hover:bg-slate-200 hover:text-slate-900 transition-all active:scale-95"
+            >
+              <LogOut className="w-5 h-5" />
+              <span>Sign Out</span>
+            </button>
+          </div>
         </div>
       </nav>
 
       <main className="max-w-7xl mx-auto px-6 py-16">
-        {/* Header Section */}
+        {}
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-8 mb-16">
           <div className="max-w-2xl">
             <h2 className="text-6xl font-black tracking-tight text-slate-900 mb-4 antialiased">
@@ -93,7 +104,7 @@ const Dashboard = () => {
           </button>
         </div>
 
-        {/* Filters and Search */}
+        {}
         <div className="mb-16 flex flex-col md:flex-row md:items-center gap-6">
           <div className="relative flex-1 group">
             <Search className="absolute left-6 top-1/2 -translate-y-1/2 text-slate-400 w-6 h-6 group-focus-within:text-indigo-600 transition-colors" />
@@ -107,7 +118,7 @@ const Dashboard = () => {
           </div>
         </div>
 
-        {/* Project Grid */}
+        {}
         {loading ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[1, 2, 3].map(i => (
@@ -165,7 +176,7 @@ const Dashboard = () => {
           </div>
         )}
 
-        {/* Create Project Modal */}
+        {}
         {isModalOpen && (
           <div className="fixed inset-0 z-100 flex items-center justify-center p-6">
             <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-md" onClick={() => setIsModalOpen(false)} />

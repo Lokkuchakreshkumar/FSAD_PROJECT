@@ -54,7 +54,7 @@ public class SubmissionServiceImpl implements SubmissionService {
 
         Submission saved = submissionRepository.save(submission);
 
-        // Send confirmation email to the submitter
+        
         emailService.sendEmail(
             user.getEmail(),
             "Submission Received: " + project.getTitle(),
@@ -63,7 +63,7 @@ public class SubmissionServiceImpl implements SubmissionService {
             "\n\nGood luck with your peer reviews!"
         );
 
-        // Notify the project owner
+        
         User owner = project.getCreatedBy();
         emailService.sendEmail(
             owner.getEmail(),

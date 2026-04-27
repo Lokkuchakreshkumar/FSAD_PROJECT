@@ -54,7 +54,7 @@ public class JwtFilter extends OncePerRequestFilter {
                 }
             }
         } catch (Exception ignored) {
-            // Invalid JWT: proceed without authentication; secured endpoints will return 401
+            
         }
 
         filterChain.doFilter(request, response);

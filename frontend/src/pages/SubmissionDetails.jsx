@@ -73,7 +73,7 @@ const SubmissionDetails = () => {
           <span>Go Back</span>
         </button>
 
-        {/* Submission Content Card */}
+        {}
         <div className="glass-card rounded-[3rem] p-12 mb-16 border-2 border-white shadow-2xl shadow-slate-200/50 relative overflow-hidden">
           <Quote className="absolute top-10 right-12 w-24 h-24 text-indigo-500/5" />
           <div className="flex items-center space-x-3 mb-8">
@@ -109,7 +109,7 @@ const SubmissionDetails = () => {
           )}
         </div>
 
-        {/* Review Form */}
+        {}
         <div className="mb-20">
           <div className="flex items-center space-x-4 mb-10">
              <div className="w-1.5 h-10 bg-indigo-600 rounded-full" />
@@ -160,7 +160,7 @@ const SubmissionDetails = () => {
           </form>
         </div>
 
-        {/* Reviews List */}
+        {}
         <div className="space-y-12">
           <h3 className="text-3xl font-black text-slate-900 tracking-tight flex items-center">
              <div className="p-3 rounded-xl bg-emerald-50 text-emerald-600 mr-5">

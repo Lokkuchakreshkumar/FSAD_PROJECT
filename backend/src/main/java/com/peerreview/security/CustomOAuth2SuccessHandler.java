@@ -40,8 +40,8 @@ public class CustomOAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHa
             User newUser = new User();
             newUser.setEmail(email);
             newUser.setName(name);
-            newUser.setRole(Role.STUDENT); // Default role
-            newUser.setPassword(""); // No password for OAuth users
+            newUser.setRole(Role.STUDENT); 
+            newUser.setPassword(""); 
             return userRepository.save(newUser);
         });
 

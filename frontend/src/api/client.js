@@ -1,10 +1,10 @@
 import axios from 'axios';
 
 const api = axios.create({
-  baseURL: 'http://localhost:8080', // Default Spring Boot port
+  baseURL: import.meta.env.VITE_API_URL || 'http://localhost:8080', 
 });
 
-// Add a request interceptor to include the JWT token
+
 api.interceptors.request.use(
   (config) => {
     const token = localStorage.getItem('token');
@@ -16,7 +16,7 @@ api.interceptors.request.use(
   (error) => Promise.reject(error)
 );
 
-// Add a response interceptor to handle errors systematically
+
 api.interceptors.response.use(
   (response) => response,
   (error) => {

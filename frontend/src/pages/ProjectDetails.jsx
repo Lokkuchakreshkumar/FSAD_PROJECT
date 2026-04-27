@@ -24,7 +24,7 @@ const ProjectDetails = () => {
   const fetchProjectAndSubmissions = async () => {
     try {
       const [projRes, subRes] = await Promise.all([
-        api.get(`/api/projects`), // Backend doesn't have GET /api/projects/{id} in controller, only listAll
+        api.get(`/api/projects`), 
         api.get(`/api/submissions/project/${projectId}`)
       ]);
       const foundProject = projRes.data.find(p => p.id === parseInt(projectId));
@@ -206,7 +206,7 @@ const ProjectDetails = () => {
         </div>
       </div>
 
-      {/* Submission Modal */}
+      {}
       {showSubmitModal && (
         <div className="fixed inset-0 z-100 flex items-center justify-center p-6">
           <div className="absolute inset-0 bg-slate-900/40 backdrop-blur-md" onClick={() => setShowSubmitModal(false)} />

@@ -13,9 +13,9 @@ const OAuthCallback = () => {
 
     if (token) {
       localStorage.setItem('token', token);
-      // We manually reload or update the context if needed
-      // Since AuthContext uses useEffect to check localStorage on mount,
-      // a simple redirect might be enough if we use a window reload or update user state.
+      
+      
+      
       window.location.href = '/'; 
     } else {
       navigate('/login');

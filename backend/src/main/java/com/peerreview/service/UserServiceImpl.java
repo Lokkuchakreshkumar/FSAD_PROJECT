@@ -89,4 +89,12 @@ public class UserServiceImpl implements UserService {
 
         return new AuthResponse(token, user.getId(), user.getName(), user.getEmail(), user.getRole());
     }
+
+    @Override
+    @Transactional(readOnly = true)
+    public UserResponse getProfile(String email) {
+        User user = userRepository.findByEmail(email)
+                .orElseThrow(() -> new InvalidCredentialsException("User not found"));
+        return new UserResponse(user.getId(), user.getName(), user.getEmail(), user.getRole());
+    }
 }

@@ -10,4 +10,6 @@ public interface UserService {
     UserResponse register(RegisterRequest request);
 
     AuthResponse login(LoginRequest request);
+
+    UserResponse getProfile(String email);
 }
