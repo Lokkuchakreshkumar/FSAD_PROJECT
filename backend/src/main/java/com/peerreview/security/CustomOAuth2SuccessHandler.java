@@ -48,7 +48,12 @@ public class CustomOAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHa
         UserDetails userDetails = userDetailsService.loadUserByUsername(user.getEmail());
         String token = jwtUtil.generateToken(userDetails);
 
-        String targetUrl = "http://localhost:5173/oauth-callback?token=" + token;
+        String frontendUrl = System.getenv("CLIENT_URL");
+        if (frontendUrl == null || frontendUrl.isEmpty()) {
+            frontendUrl = "http://localhost:5173";
+        }
+        
+        String targetUrl = frontendUrl + "/oauth-callback?token=" + token;
         getRedirectStrategy().sendRedirect(request, response, targetUrl);
     }
 }
