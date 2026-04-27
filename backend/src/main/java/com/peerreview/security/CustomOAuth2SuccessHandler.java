@@ -52,6 +52,7 @@ public class CustomOAuth2SuccessHandler extends SimpleUrlAuthenticationSuccessHa
         if (frontendUrl == null || frontendUrl.isEmpty()) {
             frontendUrl = "http://localhost:5173";
         }
+        System.out.println("DEBUG: OAuth Redirecting to: " + frontendUrl);
         
         String targetUrl = frontendUrl + "/oauth-callback?token=" + token;
         getRedirectStrategy().sendRedirect(request, response, targetUrl);
